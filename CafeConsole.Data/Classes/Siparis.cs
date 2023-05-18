@@ -17,7 +17,7 @@ namespace CafeConsole.Data.Classes
 
         public List<SiparisDetay> SiparisDetaylar { get; set; } = new();
 
-        public string? ToplamTutarTL { get; set; }
+        public string? ToplamTutarTL { get; }
 
         public decimal ToplamTutar()
         {
