@@ -12,16 +12,16 @@ namespace CafeConsole.Data.Classes
         public int MasaNo { get; set; }
         public SiparisDurum Durum { get; set; }
         public decimal OdenenTutar { get; set; }
-        public DateTime AcilisZamani { get; set; }
-        public DateTime KapanisZamani { get; set; }
+        public DateTime AcilisZamani { get; set; } = DateTime.Now;
+        public DateTime? KapanisZamani { get; set; }
 
-        public List<SiparisDetay> SiparisDetaylar { get; set; }
+        public List<SiparisDetay> SiparisDetaylar { get; set; } = new();
 
-        public decimal ToplamTutarTL { get; set; }
+        public string? ToplamTutarTL { get; set; }
 
         public decimal ToplamTutar()
         {
-            return ToplamTutarTL;
+            return 0;
         }
     }
 }

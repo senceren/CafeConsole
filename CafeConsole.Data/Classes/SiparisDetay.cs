@@ -8,14 +8,14 @@ namespace CafeConsole.Data.Classes
 {
     public class SiparisDetay
     {
-        public string UrunAdi{ get; set; }
+        public string? UrunAdi{ get; set; }
         public decimal BirimFiyat { get; set; }
         public int Adet { get; set; }
-        public decimal TutarTL { get; set; }
+        public string? TutarTL { get; }
 
         public decimal Tutar()
         {
-            return TutarTL;
+            return 0;
         }
     }
 }

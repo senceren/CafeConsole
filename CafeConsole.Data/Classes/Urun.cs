@@ -8,9 +8,9 @@ namespace CafeConsole.Data.Classes
 {
     public class Urun
     {
-        public string UrunAdi { get; set; }
+        public string? UrunAd { get; set; }
         public decimal BirimFiyat { get; set; }
-        public override string ToString()
+        public override string? ToString()
         {
             return base.ToString();
         }
