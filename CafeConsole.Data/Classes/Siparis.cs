@@ -21,7 +21,7 @@ namespace CafeConsole.Data.Classes
 
         public decimal ToplamTutar()
         {
-
+            return ToplamTutarTL;
         }
     }
 }
