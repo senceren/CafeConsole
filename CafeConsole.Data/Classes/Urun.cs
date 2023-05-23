@@ -8,11 +8,11 @@ namespace CafeConsole.Data.Classes
 {
     public class Urun
     {
-        public string? UrunAd { get; set; }
+        public string UrunAd { get; set; } = null!;
         public decimal BirimFiyat { get; set; }
-        public override string? ToString()
+        public override string ToString()
         {
-            return base.ToString();
+            return $"{UrunAd} ({BirimFiyat:c2})";
         }
     }
 }

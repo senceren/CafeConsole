@@ -17,11 +17,11 @@ namespace CafeConsole.Data.Classes
 
         public List<SiparisDetay> SiparisDetaylar { get; set; } = new();
 
-        public string? ToplamTutarTL { get; }
+        public string ToplamTutarTL { get { return ToplamTutar().ToString("c2"); } } 
 
         public decimal ToplamTutar()
         {
-            return 0;
+            return SiparisDetaylar.Sum(x => x.Tutar());
         }
     }
 }
