@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
-            dgvSiparisler = new DataGridView();
-            dgvSiparisDetaylari = new DataGridView();
             label1 = new Label();
+            dgvSiparisler = new DataGridView();
             label2 = new Label();
+            dgvSiparisDetaylari = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -61,6 +61,15 @@
             splitContainer1.SplitterDistance = 260;
             splitContainer1.TabIndex = 0;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(22, 28);
+            label1.Name = "label1";
+            label1.Size = new Size(70, 20);
+            label1.TabIndex = 1;
+            label1.Text = "Siparişler";
+            // 
             // dgvSiparisler
             // 
             dgvSiparisler.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -71,6 +80,15 @@
             dgvSiparisler.RowTemplate.Height = 29;
             dgvSiparisler.Size = new Size(738, 176);
             dgvSiparisler.TabIndex = 0;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(21, 28);
+            label2.Name = "label2";
+            label2.Size = new Size(117, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Sipariş Detayları";
             // 
             // dgvSiparisDetaylari
             // 
@@ -83,24 +101,6 @@
             dgvSiparisDetaylari.Size = new Size(738, 193);
             dgvSiparisDetaylari.TabIndex = 0;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(22, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(70, 20);
-            label1.TabIndex = 1;
-            label1.Text = "Siparişler";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(21, 28);
-            label2.Name = "label2";
-            label2.Size = new Size(117, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Sipariş Detayları";
-            // 
             // Geçmiş_Siparişler
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -108,6 +108,7 @@
             ClientSize = new Size(772, 520);
             Controls.Add(splitContainer1);
             Name = "Geçmiş_Siparişler";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Geçmiş_Siparişler";
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();

@@ -105,6 +105,7 @@
             Controls.Add(label1);
             Controls.Add(dgvÜrünler);
             Name = "Ürünler";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Ürünler";
             ((System.ComponentModel.ISupportInitialize)dgvÜrünler).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudBirimFiyat).EndInit();
