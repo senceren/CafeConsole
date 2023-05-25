@@ -52,13 +52,25 @@ namespace CafeConsole
                 db.AktifSiparisler.Add(siparis);  //aktif siparislere ekle 
             }
 
-            var frmSiparis = new SiparisForm(db,siparis);
+            var frmSiparis = new SiparisForm(db, siparis);
             frmSiparis.ShowDialog();
 
-            if(siparis.Durum != Data.Enums.SiparisDurum.Aktif)
+            if (siparis.Durum != Data.Enums.SiparisDurum.Aktif)
             {
                 lviTiklanan.ImageKey = "bos";
             }
+        }
+
+        private void tsmiGecmisSiparisler_Click(object sender, EventArgs e)
+        {
+
+            new Geçmiş_Siparişler(db).ShowDialog();
+
+        }
+
+        private void tsmiÜrünler_Click(object sender, EventArgs e)
+        {
+            new Ürünler(db).ShowDialog();
         }
     }
 }

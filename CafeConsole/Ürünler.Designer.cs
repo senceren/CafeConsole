@@ -28,26 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvÜrünler = new DataGridView();
+            dgvUrunler = new DataGridView();
             label1 = new Label();
             txtUrunAd = new TextBox();
             label2 = new Label();
             nudBirimFiyat = new NumericUpDown();
             btnEkle = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvÜrünler).BeginInit();
+            btnIptal = new Button();
+            btnDuzenle = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvUrunler).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudBirimFiyat).BeginInit();
             SuspendLayout();
             // 
-            // dgvÜrünler
+            // dgvUrunler
             // 
-            dgvÜrünler.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvÜrünler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvÜrünler.Location = new Point(12, 88);
-            dgvÜrünler.Name = "dgvÜrünler";
-            dgvÜrünler.RowHeadersWidth = 51;
-            dgvÜrünler.RowTemplate.Height = 29;
-            dgvÜrünler.Size = new Size(480, 365);
-            dgvÜrünler.TabIndex = 0;
+            dgvUrunler.AllowUserToAddRows = false;
+            dgvUrunler.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvUrunler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUrunler.Location = new Point(12, 88);
+            dgvUrunler.MultiSelect = false;
+            dgvUrunler.Name = "dgvUrunler";
+            dgvUrunler.ReadOnly = true;
+            dgvUrunler.RowHeadersVisible = false;
+            dgvUrunler.RowHeadersWidth = 51;
+            dgvUrunler.RowTemplate.Height = 29;
+            dgvUrunler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvUrunler.Size = new Size(599, 361);
+            dgvUrunler.TabIndex = 0;
             // 
             // label1
             // 
@@ -92,22 +99,48 @@
             btnEkle.TabIndex = 5;
             btnEkle.Text = "EKLE";
             btnEkle.UseVisualStyleBackColor = false;
+            btnEkle.Click += btnEkle_Click;
+            // 
+            // btnIptal
+            // 
+            btnIptal.BackColor = SystemColors.AppWorkspace;
+            btnIptal.Location = new Point(444, 46);
+            btnIptal.Name = "btnIptal";
+            btnIptal.Size = new Size(94, 29);
+            btnIptal.TabIndex = 6;
+            btnIptal.Text = "İPTAL";
+            btnIptal.UseVisualStyleBackColor = false;
+            btnIptal.Visible = false;
+            btnIptal.Click += btnIptal_Click;
+            // 
+            // btnDuzenle
+            // 
+            btnDuzenle.BackColor = SystemColors.AppWorkspace;
+            btnDuzenle.Location = new Point(492, 455);
+            btnDuzenle.Name = "btnDuzenle";
+            btnDuzenle.Size = new Size(119, 29);
+            btnDuzenle.TabIndex = 7;
+            btnDuzenle.Text = "DÜZENLE";
+            btnDuzenle.UseVisualStyleBackColor = false;
+            btnDuzenle.Click += btnDuzenle_Click;
             // 
             // Ürünler
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(504, 467);
+            ClientSize = new Size(623, 499);
+            Controls.Add(btnDuzenle);
+            Controls.Add(btnIptal);
             Controls.Add(btnEkle);
             Controls.Add(nudBirimFiyat);
             Controls.Add(label2);
             Controls.Add(txtUrunAd);
             Controls.Add(label1);
-            Controls.Add(dgvÜrünler);
+            Controls.Add(dgvUrunler);
             Name = "Ürünler";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Ürünler";
-            ((System.ComponentModel.ISupportInitialize)dgvÜrünler).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvUrunler).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudBirimFiyat).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -115,11 +148,13 @@
 
         #endregion
 
-        private DataGridView dgvÜrünler;
+        private DataGridView dgvUrunler;
         private Label label1;
         private TextBox txtUrunAd;
         private Label label2;
         private NumericUpDown nudBirimFiyat;
         private Button btnEkle;
+        private Button btnIptal;
+        private Button btnDuzenle;
     }
 }

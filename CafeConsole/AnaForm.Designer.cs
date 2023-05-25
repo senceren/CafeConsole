@@ -43,12 +43,14 @@
             tsmiÜrünler.Name = "tsmiÜrünler";
             tsmiÜrünler.Size = new Size(71, 24);
             tsmiÜrünler.Text = "Ürünler";
+            tsmiÜrünler.Click += tsmiÜrünler_Click;
             // 
             // tsmiGecmisSiparisler
             // 
             tsmiGecmisSiparisler.Name = "tsmiGecmisSiparisler";
             tsmiGecmisSiparisler.Size = new Size(136, 24);
             tsmiGecmisSiparisler.Text = "Geçmiş Siparişler";
+            tsmiGecmisSiparisler.Click += tsmiGecmisSiparisler_Click;
             // 
             // menuStrip1
             // 
