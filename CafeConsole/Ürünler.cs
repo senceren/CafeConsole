@@ -24,6 +24,7 @@ namespace CafeConsole
             dgvUrunler.DataSource = urunler;
         }
 
+
         private void btnEkle_Click(object sender, EventArgs e)
         {
             string ad = txtUrunAd.Text.Trim();
@@ -34,11 +35,11 @@ namespace CafeConsole
             }
             if (btnEkle.Text == "EKLE")
             {
-            var urun = new Urun() { UrunAd = ad, BirimFiyat = nudBirimFiyat.Value };
-            urunler.Add(urun);
+                var urun = new Urun() { UrunAd = ad, BirimFiyat = nudBirimFiyat.Value };
+                urunler.Add(urun);
 
             }
-            else if(_duzenlenen != null )
+            else if (_duzenlenen != null)
             {
                 _duzenlenen.UrunAd = ad;
                 _duzenlenen.BirimFiyat = nudBirimFiyat.Value;

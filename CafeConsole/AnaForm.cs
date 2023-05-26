@@ -6,6 +6,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,8 +19,23 @@ namespace CafeConsole
         public AnaForm()
         {
             InitializeComponent();
-            OrnekUrunleriYukle();
+            VerileriYukle();
             MasalariYükle();
+        }
+
+        private void VerileriYukle()
+        {
+            try
+            {
+                string json = File.ReadAllText("veri.json");
+                db = JsonSerializer.Deserialize<KafeVeri>(json)!;
+
+
+            }
+            catch (Exception)
+            {
+                OrnekUrunleriYukle();
+            }
         }
 
         private void OrnekUrunleriYukle()
@@ -33,7 +50,7 @@ namespace CafeConsole
             {
                 var lvi = new ListViewItem($"Masa {i + 1}");
                 lvi.Tag = i + 1;  // Tag - etiket, burda değer saklayabiliriz.
-                lvi.ImageKey = "bos";
+                lvi.ImageKey = db.AktifSiparisler.Any(x => x.MasaNo == i + 1) ? "dolu" : "bos";
                 lvwMasalar.Items.Add(lvi);
             }
         }
@@ -53,12 +70,32 @@ namespace CafeConsole
             }
 
             var frmSiparis = new SiparisForm(db, siparis);
+            frmSiparis.MasaTasindi += FrmSiparis_MasaTasindi;
             frmSiparis.ShowDialog();
 
             if (siparis.Durum != Data.Enums.SiparisDurum.Aktif)
             {
                 lviTiklanan.ImageKey = "bos";
             }
+        }
+
+        private void FrmSiparis_MasaTasindi(object? sender, MasaTasindiEventArgs e)
+        {
+            foreach(ListViewItem item in lvwMasalar.Items)
+            {
+                int masaNo = (int)item.Tag;
+                if (masaNo == e.EskiMasaNo)
+                {
+                    item.Selected = false;
+                    item.ImageKey = "bos";
+                }
+                if (masaNo == e.YeniMasaNo)
+                {
+                    item.ImageKey = "dolu";
+                    item.Selected = true;
+                }
+            }
+
         }
 
         private void tsmiGecmisSiparisler_Click(object sender, EventArgs e)
@@ -72,5 +109,18 @@ namespace CafeConsole
         {
             new Ürünler(db).ShowDialog();
         }
+
+        private void AnaForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            VerileriKaydet();
+        }
+
+        private void VerileriKaydet()
+        {
+            string json = JsonSerializer.Serialize(db);
+            File.WriteAllText("veri.json", json);
+        }
+
+       
     }
 }

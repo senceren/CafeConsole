@@ -92,6 +92,7 @@
             Name = "AnaForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cafe Console";
+            FormClosing += AnaForm_FormClosing;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

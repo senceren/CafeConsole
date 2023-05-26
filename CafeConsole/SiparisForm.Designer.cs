@@ -99,6 +99,7 @@
             btnTasi.TabIndex = 7;
             btnTasi.Text = "TAŞI";
             btnTasi.UseVisualStyleBackColor = false;
+            btnTasi.Click += btnTasi_Click;
             // 
             // label3
             // 

@@ -14,6 +14,7 @@ namespace CafeConsole
 {
     public partial class SiparisForm : Form
     {
+        public event EventHandler<MasaTasindiEventArgs>? MasaTasindi;
         private readonly KafeVeri _db;
         private readonly Siparis _siparis;
         private readonly BindingList<SiparisDetay> _siparisDetaylar;
@@ -22,11 +23,11 @@ namespace CafeConsole
         {
             _db = db;
             _siparis = siparis;
-            _siparisDetaylar = new BindingList<SiparisDetay>(_siparis.SiparisDetaylar); // binding liste bir şey eklenirse güncelliği korur.
+            _siparisDetaylar = new BindingList<SiparisDetay>(_siparis.SiparisDetaylar); //binding liste bir şey eklenirse güncelliği korur.
             _siparisDetaylar.ListChanged += _siparisDetaylar_ListChanged;
             InitializeComponent();
             dgvDetaylar.AutoGenerateColumns = false;
-            dgvDetaylar.DataSource = _siparisDetaylar; // siparislere bir şey eklenirse bağlı oldugu her yeri günceller. Hem data grid viewi günceller. Hem de listeyi günceller.
+            dgvDetaylar.DataSource = _siparisDetaylar; //siparislere bir şey eklenirse bağlı oldugu her yeri günceller. Hem data grid viewi günceller. Hem de listeyi günceller.
             Guncelle();
 
         }
@@ -43,8 +44,25 @@ namespace CafeConsole
             this.lblÖdemeTutar.Text = _siparis.ToplamTutarTL.ToString();
             cmbUrunAd.DataSource = _db.Urunler;
 
+            MasaNolariYukle();
+
         }
 
+        private void MasaNolariYukle()
+        {
+            cmbMasaNo.Items.Clear();
+
+            for (int i = 1; i <= _db.MasaAdet; i++)
+            {
+                if (!_db.AktifSiparisler.Any(x => x.MasaNo == i))
+                    cmbMasaNo.Items.Add(i);
+            }
+
+            //cmbMasaNo.DataSource = Enumerable
+            //    .Range(1, _db.MasaAdet)
+            //    .Where(i => !_db.AktifSiparisler.Any(x => x.MasaNo == i))
+            //    .ToList();
+        }
 
         private void btnEkle_Click_1(object sender, EventArgs e)
         {
@@ -96,6 +114,24 @@ namespace CafeConsole
             _db.AktifSiparisler.Remove(_siparis);
             _db.GecmisSiparisler.Add(_siparis);
             Close();
+        }
+
+        private void btnTasi_Click(object sender, EventArgs e)
+        {
+            if (cmbMasaNo.SelectedIndex == -1)
+                return;
+            int eskiMasaNo = _siparis.MasaNo;
+            int hedefMasaNo = (int)(cmbMasaNo.SelectedItem);
+            _siparis.MasaNo = hedefMasaNo;
+            Guncelle();
+            
+            if(MasaTasindi != null)
+            {
+                var args = new MasaTasindiEventArgs(eskiMasaNo, hedefMasaNo);
+                MasaTasindi(this, args);
+            }
+
+
         }
     }
 }

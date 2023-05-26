@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             dgvUrunler = new DataGridView();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column1 = new DataGridViewTextBoxColumn();
             label1 = new Label();
             txtUrunAd = new TextBox();
             label2 = new Label();
@@ -44,7 +47,9 @@
             // 
             dgvUrunler.AllowUserToAddRows = false;
             dgvUrunler.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvUrunler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvUrunler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUrunler.Columns.AddRange(new DataGridViewColumn[] { Column2, Column1 });
             dgvUrunler.Location = new Point(12, 88);
             dgvUrunler.MultiSelect = false;
             dgvUrunler.Name = "dgvUrunler";
@@ -53,8 +58,28 @@
             dgvUrunler.RowHeadersWidth = 51;
             dgvUrunler.RowTemplate.Height = 29;
             dgvUrunler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvUrunler.Size = new Size(599, 361);
+            dgvUrunler.Size = new Size(595, 381);
             dgvUrunler.TabIndex = 0;
+            // 
+            // Column2
+            // 
+            Column2.DataPropertyName = "UrunAd";
+            Column2.HeaderText = "Ürün Adı";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            Column2.Width = 96;
+            // 
+            // Column1
+            // 
+            Column1.DataPropertyName = "BirimFiyat";
+            dataGridViewCellStyle1.Format = "c2";
+            Column1.DefaultCellStyle = dataGridViewCellStyle1;
+            Column1.HeaderText = "Birim Fiyat";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            Column1.Width = 108;
             // 
             // label1
             // 
@@ -115,8 +140,9 @@
             // 
             // btnDuzenle
             // 
+            btnDuzenle.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnDuzenle.BackColor = SystemColors.AppWorkspace;
-            btnDuzenle.Location = new Point(492, 455);
+            btnDuzenle.Location = new Point(488, 475);
             btnDuzenle.Name = "btnDuzenle";
             btnDuzenle.Size = new Size(119, 29);
             btnDuzenle.TabIndex = 7;
@@ -128,7 +154,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(623, 499);
+            ClientSize = new Size(619, 519);
             Controls.Add(btnDuzenle);
             Controls.Add(btnIptal);
             Controls.Add(btnEkle);
@@ -156,5 +182,7 @@
         private Button btnEkle;
         private Button btnIptal;
         private Button btnDuzenle;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column1;
     }
 }
